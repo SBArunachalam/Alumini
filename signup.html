@@ -1,0 +1,1134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AlumniLink - Professional Registration</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #0a0e27;
+      min-height: 100vh;
+      padding: 40px 20px;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* Animated Neon Background */
+    .neon-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    /* Animated Gradient Orbs */
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.6;
+      animation: float 20s infinite ease-in-out;
+    }
+
+    .orb1 {
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, #00f5ff, #0099ff);
+      top: -100px;
+      left: -100px;
+      animation-delay: 0s;
+    }
+
+    .orb2 {
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, #ff00ff, #ff0099);
+      bottom: -150px;
+      right: -100px;
+      animation-delay: 5s;
+    }
+
+    .orb3 {
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, #00ff88, #00ccff);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      animation-delay: 10s;
+    }
+
+    @keyframes float {
+
+      0%,
+      100% {
+        transform: translate(0, 0) scale(1);
+      }
+
+      25% {
+        transform: translate(100px, -100px) scale(1.1);
+      }
+
+      50% {
+        transform: translate(-50px, 100px) scale(0.9);
+      }
+
+      75% {
+        transform: translate(150px, 50px) scale(1.05);
+      }
+    }
+
+    /* Grid Pattern */
+    .grid {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image:
+        linear-gradient(rgba(0, 245, 255, 0.1) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 245, 255, 0.1) 1px, transparent 1px);
+      background-size: 50px 50px;
+      animation: gridMove 20s linear infinite;
+    }
+
+    @keyframes gridMove {
+      0% {
+        transform: translate(0, 0);
+      }
+
+      100% {
+        transform: translate(50px, 50px);
+      }
+    }
+
+    /* Neon Lines */
+    .neon-lines {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    .neon-line {
+      position: absolute;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #00f5ff, transparent);
+      box-shadow: 0 0 10px #00f5ff, 0 0 20px #00f5ff;
+      animation: moveLine 8s linear infinite;
+    }
+
+    .neon-line:nth-child(1) {
+      top: 20%;
+      width: 60%;
+      left: -60%;
+      animation-delay: 0s;
+    }
+
+    .neon-line:nth-child(2) {
+      top: 50%;
+      width: 70%;
+      left: -70%;
+      animation-delay: 3s;
+      background: linear-gradient(90deg, transparent, #ff00ff, transparent);
+      box-shadow: 0 0 10px #ff00ff, 0 0 20px #ff00ff;
+    }
+
+    .neon-line:nth-child(3) {
+      top: 80%;
+      width: 50%;
+      left: -50%;
+      animation-delay: 6s;
+      background: linear-gradient(90deg, transparent, #00ff88, transparent);
+      box-shadow: 0 0 10px #00ff88, 0 0 20px #00ff88;
+    }
+
+    @keyframes moveLine {
+      0% {
+        left: -100%;
+      }
+
+      100% {
+        left: 100%;
+      }
+    }
+
+    /* Floating Particles */
+    .particles {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+    }
+
+    .particle {
+      position: absolute;
+      width: 3px;
+      height: 3px;
+      background: #00f5ff;
+      border-radius: 50%;
+      box-shadow: 0 0 10px #00f5ff;
+      animation: floatParticle 15s infinite ease-in-out;
+    }
+
+    .particle:nth-child(1) {
+      left: 10%;
+      top: 20%;
+      animation-delay: 0s;
+    }
+
+    .particle:nth-child(2) {
+      left: 30%;
+      top: 60%;
+      animation-delay: 2s;
+      background: #ff00ff;
+      box-shadow: 0 0 10px #ff00ff;
+    }
+
+    .particle:nth-child(3) {
+      left: 50%;
+      top: 40%;
+      animation-delay: 4s;
+      background: #00ff88;
+      box-shadow: 0 0 10px #00ff88;
+    }
+
+    .particle:nth-child(4) {
+      left: 70%;
+      top: 70%;
+      animation-delay: 6s;
+    }
+
+    .particle:nth-child(5) {
+      left: 90%;
+      top: 30%;
+      animation-delay: 8s;
+      background: #ff00ff;
+      box-shadow: 0 0 10px #ff00ff;
+    }
+
+    .particle:nth-child(6) {
+      left: 20%;
+      top: 80%;
+      animation-delay: 10s;
+      background: #00ff88;
+      box-shadow: 0 0 10px #00ff88;
+    }
+
+    @keyframes floatParticle {
+
+      0%,
+      100% {
+        transform: translate(0, 0);
+        opacity: 0;
+      }
+
+      10% {
+        opacity: 1;
+      }
+
+      90% {
+        opacity: 1;
+      }
+
+      100% {
+        transform: translate(200px, -300px);
+        opacity: 0;
+      }
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 20px;
+      box-shadow: 0 20px 60px rgba(0, 245, 255, 0.3), 0 0 40px rgba(255, 0, 255, 0.2);
+      overflow: hidden;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(0, 245, 255, 0.2);
+    }
+
+    .header {
+      background: linear-gradient(135deg, #0099ff 0%, #ff00ff 100%);
+      padding: 40px;
+      text-align: center;
+      color: white;
+      position: relative;
+      box-shadow: 0 0 30px rgba(0, 245, 255, 0.5);
+    }
+
+    .header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.1) 50%, transparent 70%);
+      animation: shimmer 3s infinite;
+    }
+
+    @keyframes shimmer {
+      0% {
+        transform: translateX(-100%);
+      }
+
+      100% {
+        transform: translateX(100%);
+      }
+    }
+
+    .logo {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+      position: relative;
+      z-index: 1;
+      text-shadow: 0 0 20px rgba(0, 245, 255, 0.8), 0 0 40px rgba(255, 0, 255, 0.6);
+    }
+
+    .tagline {
+      font-size: 1.1rem;
+      opacity: 0.95;
+      position: relative;
+      z-index: 1;
+      text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    }
+
+    .progress {
+      height: 4px;
+      background: rgba(0, 0, 0, 0.1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .progress::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(90deg, transparent, rgba(0, 245, 255, 0.3), transparent);
+      animation: progressShine 2s infinite;
+    }
+
+    @keyframes progressShine {
+      0% {
+        transform: translateX(-100%);
+      }
+
+      100% {
+        transform: translateX(100%);
+      }
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #00f5ff, #ff00ff, #00ff88);
+      width: 0;
+      transition: width 0.3s;
+      box-shadow: 0 0 10px #00f5ff;
+      position: relative;
+      z-index: 1;
+    }
+
+    .form-container {
+      padding: 50px 40px;
+    }
+
+    .section {
+      margin: 30px 0 20px;
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: #2d3748;
+      padding-bottom: 10px;
+      border-bottom: 2px solid #e2e8f0;
+    }
+
+    .section:first-of-type {
+      margin-top: 0;
+    }
+
+    .row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-bottom: 20px;
+    }
+
+    .field {
+      margin-bottom: 20px;
+    }
+
+    .full {
+      grid-column: 1 / -1;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 500;
+      color: #2d3748;
+      font-size: 0.95rem;
+    }
+
+    .req {
+      color: #e53e3e;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      padding: 12px 16px;
+      border: 2px solid #e2e8f0;
+      border-radius: 8px;
+      font-size: 1rem;
+      transition: all 0.3s;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      outline: none;
+      border-color: #00f5ff;
+      box-shadow: 0 0 0 3px rgba(0, 245, 255, 0.2), 0 0 15px rgba(0, 245, 255, 0.3);
+    }
+
+    .error {
+      border-color: #e53e3e !important;
+    }
+
+    .success {
+      border-color: #48bb78 !important;
+    }
+
+    .err-msg {
+      color: #e53e3e;
+      font-size: 0.85rem;
+      margin-top: 5px;
+      display: none;
+    }
+
+    .err-msg.show {
+      display: block;
+    }
+
+    .hint {
+      font-size: 0.85rem;
+      color: #718096;
+      margin-top: 5px;
+    }
+
+    select[multiple] {
+      min-height: 180px;
+      padding: 10px;
+    }
+
+    optgroup {
+      font-weight: 600;
+      padding: 8px 0;
+    }
+
+    .checkbox {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+
+    .checkbox input {
+      width: auto;
+      margin-top: 3px;
+    }
+
+    .checkbox label {
+      margin: 0;
+      font-weight: 400;
+    }
+
+    .btn {
+      width: 100%;
+      padding: 16px;
+      background: linear-gradient(135deg, #00f5ff 0%, #ff00ff 100%);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+      margin-top: 30px;
+      box-shadow: 0 5px 25px rgba(0, 245, 255, 0.4);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+      transition: left 0.5s;
+    }
+
+    .btn:hover::before {
+      left: 100%;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 35px rgba(0, 245, 255, 0.6), 0 0 20px rgba(255, 0, 255, 0.4);
+    }
+
+    .link {
+      text-align: center;
+      margin-top: 20px;
+      color: #718096;
+    }
+
+    .link a {
+      color: #00f5ff;
+      text-decoration: none;
+      font-weight: 600;
+      text-shadow: 0 0 10px rgba(0, 245, 255, 0.5);
+      transition: all 0.3s;
+    }
+
+    .link a:hover {
+      text-shadow: 0 0 15px rgba(0, 245, 255, 0.8);
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+      animation: fadeIn 0.3s ease;
+    }
+
+    .modal.show {
+      display: flex;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+
+    .modal-content {
+      background: linear-gradient(135deg, rgba(10, 14, 39, 0.95), rgba(20, 25, 60, 0.95));
+      padding: 50px;
+      border-radius: 20px;
+      text-align: center;
+      max-width: 500px;
+      margin: 20px;
+      border: 2px solid rgba(0, 245, 255, 0.3);
+      box-shadow: 0 0 50px rgba(0, 245, 255, 0.5), 0 0 100px rgba(255, 0, 255, 0.3);
+      animation: modalSlideIn 0.4s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .modal-content::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(45deg, transparent, rgba(0, 245, 255, 0.1), transparent);
+      animation: modalShine 3s infinite;
+    }
+
+    @keyframes modalSlideIn {
+      from {
+        transform: translateY(-50px);
+        opacity: 0;
+      }
+
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    @keyframes modalShine {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    .icon {
+      font-size: 5rem;
+      margin-bottom: 20px;
+      animation: iconBounce 0.6s ease, iconGlow 2s infinite alternate;
+      filter: drop-shadow(0 0 20px rgba(0, 245, 255, 0.8));
+      position: relative;
+      z-index: 1;
+    }
+
+    @keyframes iconBounce {
+
+      0%,
+      100% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.2);
+      }
+    }
+
+    @keyframes iconGlow {
+      0% {
+        filter: drop-shadow(0 0 20px rgba(0, 245, 255, 0.8));
+      }
+
+      100% {
+        filter: drop-shadow(0 0 40px rgba(255, 0, 255, 0.8));
+      }
+    }
+
+    .modal-content h2 {
+      color: #fff;
+      margin-bottom: 15px;
+      font-size: 2rem;
+      text-shadow: 0 0 20px rgba(0, 245, 255, 0.6);
+      position: relative;
+      z-index: 1;
+    }
+
+    .modal-content p {
+      color: rgba(255, 255, 255, 0.8);
+      margin-bottom: 30px;
+      font-size: 1.1rem;
+      line-height: 1.6;
+      position: relative;
+      z-index: 1;
+    }
+
+    .modal-content .btn {
+      margin-top: 10px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .pw-strength {
+      margin-top: 8px;
+      height: 4px;
+      background: #e2e8f0;
+      border-radius: 2px;
+      overflow: hidden;
+    }
+
+    .pw-fill {
+      height: 100%;
+      width: 0;
+      transition: all 0.3s;
+    }
+
+    .weak {
+      background: #e53e3e;
+      width: 33%;
+    }
+
+    .medium {
+      background: #ed8936;
+      width: 66%;
+    }
+
+    .strong {
+      background: #48bb78;
+      width: 100%;
+    }
+
+    @media (max-width: 768px) {
+      .row {
+        grid-template-columns: 1fr;
+      }
+
+      .form-container {
+        padding: 30px 20px;
+      }
+
+      .header {
+        padding: 30px 20px;
+      }
+
+      .logo {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Neon Background -->
+  <div class="neon-bg">
+    <div class="orb orb1"></div>
+    <div class="orb orb2"></div>
+    <div class="orb orb3"></div>
+    <div class="grid"></div>
+    <div class="neon-lines">
+      <div class="neon-line"></div>
+      <div class="neon-line"></div>
+      <div class="neon-line"></div>
+    </div>
+    <div class="particles">
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="card">
+      <div class="header">
+        <div class="logo">🎓 AlumniLink</div>
+        <div class="tagline">Join Our Professional Alumni Network</div>
+      </div>
+      <div class="progress">
+        <div class="progress-fill" id="progress"></div>
+      </div>
+
+      <div class="form-container">
+        <form id="form">
+          <div class="section">Personal Information</div>
+          <div class="row">
+            <div class="field">
+              <label>First Name <span class="req">*</span></label>
+              <input type="text" id="firstName" required>
+              <div class="err-msg" id="firstName-err"></div>
+            </div>
+            <div class="field">
+              <label>Last Name <span class="req">*</span></label>
+              <input type="text" id="lastName" required>
+              <div class="err-msg" id="lastName-err"></div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="field">
+              <label>Email <span class="req">*</span></label>
+              <input type="email" id="email" required>
+              <div class="hint">Use your professional email</div>
+              <div class="err-msg" id="email-err"></div>
+            </div>
+            <div class="field">
+              <label>Phone <span class="req">*</span></label>
+              <input type="tel" id="phone" placeholder="+1 (555) 000-0000" required>
+              <div class="err-msg" id="phone-err"></div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="field">
+              <label>Date of Birth <span class="req">*</span></label>
+              <input type="date" id="dob" required>
+              <div class="err-msg" id="dob-err"></div>
+            </div>
+            <div class="field">
+              <label>Gender</label>
+              <select id="gender">
+                <option value="">Select</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="other">Other</option>
+                <option value="prefer-not">Prefer not to say</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="section">Account Security</div>
+          <div class="row">
+            <div class="field">
+              <label>Username <span class="req">*</span></label>
+              <input type="text" id="username" required>
+              <div class="hint">Minimum 4 characters</div>
+              <div class="err-msg" id="username-err"></div>
+            </div>
+            <div class="field">
+              <label>Password <span class="req">*</span></label>
+              <input type="password" id="password" required>
+              <div class="pw-strength">
+                <div class="pw-fill" id="pwStrength"></div>
+              </div>
+              <div class="hint">8+ chars with uppercase, lowercase, numbers</div>
+              <div class="err-msg" id="password-err"></div>
+            </div>
+          </div>
+          <div class="field">
+            <label>Confirm Password <span class="req">*</span></label>
+            <input type="password" id="confirmPw" required>
+            <div class="err-msg" id="confirmPw-err"></div>
+          </div>
+
+          <div class="section">Educational Background</div>
+          <div class="field">
+            <label>College/University <span class="req">*</span></label>
+            <input type="text" id="college" required>
+            <div class="err-msg" id="college-err"></div>
+          </div>
+          <div class="row">
+            <div class="field">
+              <label>Department <span class="req">*</span></label>
+              <select id="dept" required>
+                <option value="">Select</option>
+                <option value="CSE">Computer Science & Engineering</option>
+                <option value="ECE">Electronics & Communication</option>
+                <option value="EEE">Electrical & Electronics</option>
+                <option value="MECH">Mechanical Engineering</option>
+                <option value="CIVIL">Civil Engineering</option>
+                <option value="IT">Information Technology</option>
+                <option value="CHEM">Chemical Engineering</option>
+                <option value="BIO">Biotechnology</option>
+                <option value="OTHER">Other</option>
+              </select>
+              <div class="err-msg" id="dept-err"></div>
+            </div>
+            <div class="field">
+              <label>Degree <span class="req">*</span></label>
+              <select id="degree" required>
+                <option value="">Select</option>
+                <option value="BE">Bachelor of Engineering</option>
+                <option value="BTECH">Bachelor of Technology</option>
+                <option value="ME">Master of Engineering</option>
+                <option value="MTECH">Master of Technology</option>
+                <option value="MBA">MBA</option>
+                <option value="MCA">MCA</option>
+                <option value="PHD">PhD</option>
+                <option value="OTHER">Other</option>
+              </select>
+              <div class="err-msg" id="degree-err"></div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="field">
+              <label>Graduation Year <span class="req">*</span></label>
+              <input type="number" id="gradYear" min="1950" max="2030" required>
+              <div class="err-msg" id="gradYear-err"></div>
+            </div>
+            <div class="field">
+              <label>Roll/Student ID</label>
+              <input type="text" id="rollNo">
+            </div>
+          </div>
+
+          <div class="section">Professional Information</div>
+          <div class="row">
+            <div class="field">
+              <label>Current Company</label>
+              <input type="text" id="company">
+            </div>
+            <div class="field">
+              <label>Designation</label>
+              <input type="text" id="designation">
+            </div>
+          </div>
+          <div class="row">
+            <div class="field">
+              <label>Industry</label>
+              <select id="industry">
+                <option value="">Select</option>
+                <option value="IT">Information Technology</option>
+                <option value="FINANCE">Banking & Finance</option>
+                <option value="HEALTHCARE">Healthcare</option>
+                <option value="EDUCATION">Education</option>
+                <option value="MANUFACTURING">Manufacturing</option>
+                <option value="CONSULTING">Consulting</option>
+                <option value="STARTUP">Startup</option>
+                <option value="GOVT">Government</option>
+                <option value="RESEARCH">Research & Development</option>
+              </select>
+            </div>
+            <div class="field">
+              <label>Experience</label>
+              <select id="exp">
+                <option value="">Select</option>
+                <option value="0-1">0-1 years (Fresher)</option>
+                <option value="1-3">1-3 years</option>
+                <option value="3-5">3-5 years</option>
+                <option value="5-10">5-10 years</option>
+                <option value="10+">10+ years</option>
+              </select>
+            </div>
+          </div>
+          <div class="field">
+            <label>Location <span class="req">*</span></label>
+            <input type="text" id="location" placeholder="City, State, Country" required>
+            <div class="err-msg" id="location-err"></div>
+          </div>
+          <div class="field">
+            <label>Skills & Expertise</label>
+            <input type="text" id="skills" placeholder="Python, ML, Project Management">
+            <div class="hint">Separate with commas</div>
+          </div>
+          <div class="field">
+            <label>LinkedIn Profile</label>
+            <input type="url" id="linkedin" placeholder="https://linkedin.com/in/yourprofile">
+          </div>
+
+          <div class="section">Interests & Engagement</div>
+          <div class="field full">
+            <label>Select Interests <span class="req">*</span></label>
+            <div class="hint">Hold Ctrl/Cmd for multiple</div>
+            <select id="interests" multiple required>
+              <optgroup label="Career & Professional">
+                <option value="jobs">Job Opportunities</option>
+                <option value="internships">Internships</option>
+                <option value="career">Career Guidance</option>
+                <option value="resume">Resume Review</option>
+                <option value="interview">Interview Prep</option>
+                <option value="skills">Skill Development</option>
+                <option value="entrepreneur">Entrepreneurship</option>
+              </optgroup>
+              <optgroup label="Mentorship">
+                <option value="mentor_students">Mentor Students</option>
+                <option value="seek_mentor">Seeking Mentorship</option>
+                <option value="guest_talk">Guest Lectures</option>
+                <option value="counseling">Career Counseling</option>
+              </optgroup>
+              <optgroup label="Networking & Events">
+                <option value="meetups">Alumni Meetups</option>
+                <option value="networking">Networking Events</option>
+                <option value="webinars">Webinars</option>
+                <option value="workshops">Workshops</option>
+                <option value="conferences">Conferences</option>
+              </optgroup>
+              <optgroup label="Academic">
+                <option value="higher_ed">Higher Studies</option>
+                <option value="research">Research Collaboration</option>
+                <option value="phd">PhD Guidance</option>
+                <option value="exams">Competitive Exams</option>
+              </optgroup>
+              <optgroup label="Contribution">
+                <option value="placement">Placement Support</option>
+                <option value="projects">Project Guidance</option>
+                <option value="funding">Fund Projects</option>
+                <option value="volunteer">Volunteering</option>
+              </optgroup>
+            </select>
+            <div class="err-msg" id="interests-err"></div>
+          </div>
+          <div class="field">
+            <label>Availability</label>
+            <select id="avail">
+              <option value="">Select</option>
+              <option value="very">Very Active (Multiple/week)</option>
+              <option value="active">Active (Weekly)</option>
+              <option value="moderate">Moderate (Monthly)</option>
+              <option value="occasional">Occasional (Few times/year)</option>
+              <option value="events">Events Only</option>
+            </select>
+          </div>
+
+          <div class="section">Additional Information</div>
+          <div class="field">
+            <label>Professional Bio</label>
+            <textarea id="bio" rows="4" placeholder="Your journey and what you'd contribute..."></textarea>
+            <div class="hint">Max 500 characters</div>
+          </div>
+          <div class="field">
+            <label>Achievements</label>
+            <textarea id="achievements" rows="3" placeholder="Awards, publications, milestones..."></textarea>
+          </div>
+
+          <div class="field">
+            <div class="checkbox">
+              <input type="checkbox" id="terms" required>
+              <label for="terms">I agree to <a href="#">Terms</a> and <a href="#">Privacy</a> <span
+                  class="req">*</span></label>
+            </div>
+            <div class="err-msg" id="terms-err"></div>
+          </div>
+          <!-- <div class="field">
+            <div class="checkbox">
+              <input type="checkbox" id="newsletter">
+              <label for="newsletter">Receive newsletters and updates</label>
+            </div>
+          </div> -->
+
+          <button type="submit" class="btn">Create Account</button>
+        </form>
+        <div class="link">Already registered? <a href="loading.html">Sign In</a></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" id="modal">
+    <div class="modal-content">
+      <div class="icon">🎉</div>
+      <h2>Registration Successful!</h2>
+      <p>Welcome to AlumniLink! A verification email has been sent.</p>
+      <button class="btn" onclick="location.reload()">Close</button>
+    </div>
+  </div>
+
+  <script>
+    const f = document.getElementById('form');
+    const prog = document.getElementById('progress');
+    const pwStr = document.getElementById('pwStrength');
+    const modal = document.getElementById('modal');
+
+    function upd() {
+      const inp = f.querySelectorAll('input:required, select:required');
+      let c = 0;
+      inp.forEach(i => { if (i.type === 'checkbox' ? i.checked : i.value.trim() !== '') c++; });
+      prog.style.width = (c / inp.length * 100) + '%';
+    }
+
+    document.getElementById('password').addEventListener('input', e => {
+      const p = e.target.value;
+      let s = 0;
+      if (p.length >= 8) s++;
+      if (/[a-z]/.test(p)) s++;
+      if (/[A-Z]/.test(p)) s++;
+      if (/[0-9]/.test(p)) s++;
+      if (/[^a-zA-Z0-9]/.test(p)) s++;
+      pwStr.className = 'pw-fill ' + (s <= 2 ? 'weak' : s <= 4 ? 'medium' : 'strong');
+    });
+
+    function err(id, msg) {
+      const el = document.getElementById(id);
+      const er = document.getElementById(id + '-err');
+      el.classList.add('error');
+      el.classList.remove('success');
+      if (er) { er.textContent = msg; er.classList.add('show'); }
+    }
+
+    function ok(id) {
+      const el = document.getElementById(id);
+      const er = document.getElementById(id + '-err');
+      el.classList.remove('error');
+      el.classList.add('success');
+      if (er) er.classList.remove('show');
+    }
+
+    function valEmail(e) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e); }
+    function valPhone(p) { return /^[\d\s\+\-\(\)]+$/.test(p) && p.replace(/\D/g, '').length >= 10; }
+    function valPw(p) { return p.length >= 8 && /[a-z]/.test(p) && /[A-Z]/.test(p) && /[0-9]/.test(p); }
+
+    f.addEventListener('input', upd);
+    f.addEventListener('change', upd);
+
+    f.addEventListener('submit', e => {
+      e.preventDefault();
+      let v = true;
+
+      const fn = document.getElementById('firstName').value.trim();
+      if (!fn) { err('firstName', 'Required'); v = false; } else ok('firstName');
+
+      const ln = document.getElementById('lastName').value.trim();
+      if (!ln) { err('lastName', 'Required'); v = false; } else ok('lastName');
+
+      const em = document.getElementById('email').value.trim();
+      if (!em) { err('email', 'Required'); v = false; }
+      else if (!valEmail(em)) { err('email', 'Invalid email'); v = false; }
+      else ok('email');
+
+      const ph = document.getElementById('phone').value.trim();
+      if (!ph) { err('phone', 'Required'); v = false; }
+      else if (!valPhone(ph)) { err('phone', 'Invalid phone'); v = false; }
+      else ok('phone');
+
+      const db = document.getElementById('dob').value;
+      if (!db) { err('dob', 'Required'); v = false; } else ok('dob');
+
+      const un = document.getElementById('username').value.trim();
+      if (!un) { err('username', 'Required'); v = false; }
+      else if (un.length < 4) { err('username', 'Min 4 chars'); v = false; }
+      else ok('username');
+
+      const pw = document.getElementById('password').value;
+      if (!pw) { err('password', 'Required'); v = false; }
+      else if (!valPw(pw)) { err('password', '8+ chars, upper, lower, number'); v = false; }
+      else ok('password');
+
+      const cpw = document.getElementById('confirmPw').value;
+      if (!cpw) { err('confirmPw', 'Required'); v = false; }
+      else if (cpw !== pw) { err('confirmPw', 'No match'); v = false; }
+      else ok('confirmPw');
+
+      const col = document.getElementById('college').value.trim();
+      if (!col) { err('college', 'Required'); v = false; } else ok('college');
+
+      const dep = document.getElementById('dept').value;
+      if (!dep) { err('dept', 'Required'); v = false; } else ok('dept');
+
+      const deg = document.getElementById('degree').value;
+      if (!deg) { err('degree', 'Required'); v = false; } else ok('degree');
+
+      const gy = document.getElementById('gradYear').value;
+      if (!gy) { err('gradYear', 'Required'); v = false; } else ok('gradYear');
+
+      const loc = document.getElementById('location').value.trim();
+      if (!loc) { err('location', 'Required'); v = false; } else ok('location');
+
+      const int = document.getElementById('interests');
+      if (int.selectedOptions.length === 0) { err('interests', 'Select at least one'); v = false; } else ok('interests');
+
+      const trm = document.getElementById('terms');
+      if (!trm.checked) { err('terms', 'Must agree'); v = false; } else ok('terms');
+
+      if (v) {
+        const data = {
+          firstName: fn, lastName: ln, email: em, phone: ph,
+          dob: db, gender: document.getElementById('gender').value,
+          username: un, college: col, department: dep, degree: deg,
+          gradYear: gy, rollNo: document.getElementById('rollNo').value,
+          company: document.getElementById('company').value,
+          designation: document.getElementById('designation').value,
+          industry: document.getElementById('industry').value,
+          experience: document.getElementById('exp').value,
+          location: loc, skills: document.getElementById('skills').value,
+          linkedin: document.getElementById('linkedin').value,
+          interests: Array.from(int.selectedOptions).map(o => o.value),
+          availability: document.getElementById('avail').value,
+          bio: document.getElementById('bio').value,
+          achievements: document.getElementById('achievements').value,
+          newsletter: document.getElementById('newsletter').checked
+        };
+        console.log('Registration Data:', data);
+        modal.classList.add('show');
+      }
+    });
+
+    upd();
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,1034 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AlumniLink - Login</title>
+    <link rel="stylesheet" href="https://fontawesome.com/">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #0a0a0a;
+            color: #fff;
+            overflow: auto;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+
+        .animated-bg {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+            background: radial-gradient(ellipse at top, #1a1a2e 0%, #0a0a0a 100%);
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .animated-bg::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 50%, rgba(240, 147, 251, 0.1) 100%);
+            pointer-events: none;
+        }
+
+        .confetti {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            pointer-events: none;
+            will-change: transform;
+        }
+
+        .confetti:nth-child(1) {
+            left: 10%;
+            animation: fall 8s linear infinite;
+            background: #ff6b6b;
+            animation-delay: 0s;
+        }
+
+        .confetti:nth-child(2) {
+            left: 20%;
+            animation: fall 10s linear infinite;
+            background: #4ecdc4;
+            animation-delay: 1s;
+        }
+
+        .confetti:nth-child(3) {
+            left: 30%;
+            animation: fall 7s linear infinite;
+            background: #ffd93d;
+            animation-delay: 2s;
+        }
+
+        .confetti:nth-child(4) {
+            left: 40%;
+            animation: fall 9s linear infinite;
+            background: #f093fb;
+            animation-delay: 0.5s;
+        }
+
+        .confetti:nth-child(5) {
+            left: 50%;
+            animation: fall 8.5s linear infinite;
+            background: #95e1d3;
+            animation-delay: 1.5s;
+        }
+
+        .confetti:nth-child(6) {
+            left: 60%;
+            animation: fall 11s linear infinite;
+            background: #ff6b9d;
+            animation-delay: 2.5s;
+        }
+
+        .confetti:nth-child(7) {
+            left: 70%;
+            animation: fall 7.5s linear infinite;
+            background: #ffa500;
+            animation-delay: 0.8s;
+        }
+
+        .confetti:nth-child(8) {
+            left: 80%;
+            animation: fall 9.5s linear infinite;
+            background: #667eea;
+            animation-delay: 1.8s;
+        }
+
+        .confetti:nth-child(9) {
+            left: 90%;
+            animation: fall 10.5s linear infinite;
+            background: #c471ed;
+            animation-delay: 3s;
+        }
+
+        .confetti:nth-child(10) {
+            left: 15%;
+            animation: fall 8.2s linear infinite;
+            background: #59d499;
+            animation-delay: 0.3s;
+        }
+
+        @keyframes fall {
+            0% {
+                top: -10%;
+                transform: translateX(0) rotateZ(0deg);
+                opacity: 1;
+            }
+
+            100% {
+                top: 110%;
+                transform: translateX(100px) rotateZ(720deg);
+                opacity: 0.5;
+            }
+        }
+
+        .sparkle {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: #fff;
+            border-radius: 50%;
+            pointer-events: none;
+            box-shadow: 0 0 10px #fff, 0 0 20px #fff;
+            animation: twinkle 3s ease-in-out infinite;
+        }
+
+        .sparkle:nth-child(11) {
+            left: 15%;
+            top: 20%;
+            animation-delay: 0s;
+        }
+
+        .sparkle:nth-child(12) {
+            left: 45%;
+            top: 35%;
+            animation-delay: 1s;
+        }
+
+        .sparkle:nth-child(13) {
+            left: 75%;
+            top: 15%;
+            animation-delay: 2s;
+        }
+
+        .sparkle:nth-child(14) {
+            left: 30%;
+            top: 60%;
+            animation-delay: 0.5s;
+        }
+
+        .sparkle:nth-child(15) {
+            left: 60%;
+            top: 70%;
+            animation-delay: 1.5s;
+        }
+
+        @keyframes twinkle {
+
+            0%,
+            100% {
+                opacity: 0;
+                transform: scale(0);
+            }
+
+            50% {
+                opacity: 1;
+                transform: scale(1.5);
+            }
+        }
+
+        .main-container {
+            display: flex;
+            width: 100%;
+            max-width: 1200px;
+            padding: 20px;
+            gap: 60px;
+            align-items: center;
+            position: relative;
+            z-index: 10;
+        }
+
+        .cartoon-container {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: fadeInLeft 0.8s ease-out;
+        }
+
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .cartoon-character {
+            position: relative;
+            width: 400px;
+            height: 500px;
+            transition: all 0.3s ease;
+        }
+
+        .character-body {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+            height: 280px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 100px 100px 40px 40px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateX(-50%) translateY(0);
+            }
+
+            50% {
+                transform: translateX(-50%) translateY(-10px);
+            }
+        }
+
+        .character-head {
+            position: absolute;
+            top: 60px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 180px;
+            height: 180px;
+            background: #ffd89b;
+            border-radius: 50%;
+            transition: transform 0.3s ease;
+        }
+
+        .character-head.peeking {
+            animation: peek 0.5s ease;
+        }
+
+        @keyframes peek {
+
+            0%,
+            100% {
+                transform: translateX(-50%) scale(1);
+            }
+
+            50% {
+                transform: translateX(-50%) scale(0.95) translateY(5px);
+            }
+        }
+
+        .grad-cap-char {
+            position: absolute;
+            top: -30px;
+            left: 50%;
+            transform: translateX(-50%) rotate(-10deg);
+            width: 140px;
+            height: 20px;
+            background: #2d3436;
+            border-radius: 5px;
+        }
+
+        .grad-cap-char::before {
+            content: '';
+            position: absolute;
+            top: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 60px;
+            background: #2d3436;
+            border-radius: 5px 5px 0 0;
+        }
+
+        .grad-cap-char::after {
+            content: '🎓';
+            position: absolute;
+            top: -55px;
+            right: -20px;
+            font-size: 30px;
+            animation: swing 2s ease-in-out infinite;
+        }
+
+        @keyframes swing {
+
+            0%,
+            100% {
+                transform: rotate(0deg);
+            }
+
+            50% {
+                transform: rotate(10deg);
+            }
+        }
+
+        .eyes-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            gap: 40px;
+        }
+
+        .eye {
+            width: 30px;
+            height: 30px;
+            background: #fff;
+            border-radius: 50%;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .eye.closed {
+            height: 5px;
+            border-radius: 15px;
+            background: #2d3436;
+        }
+
+        .pupil {
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            background: #2d3436;
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            transition: all 0.3s ease;
+        }
+
+        .eye.closed .pupil {
+            opacity: 0;
+        }
+
+        .mouth {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 30px;
+            border: 4px solid #2d3436;
+            border-top: none;
+            border-radius: 0 0 60px 60px;
+            transition: all 0.3s ease;
+        }
+
+        .mouth.surprised {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 4px solid #2d3436;
+            animation: gasp 0.3s ease;
+        }
+
+        @keyframes gasp {
+
+            0%,
+            100% {
+                transform: translateX(-50%) scale(1);
+            }
+
+            50% {
+                transform: translateX(-50%) scale(1.2);
+            }
+        }
+
+        .arms {
+            position: absolute;
+            bottom: 160px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 260px;
+            height: 80px;
+        }
+
+        .arm {
+            position: absolute;
+            width: 60px;
+            height: 120px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 30px;
+        }
+
+        .arm.left {
+            left: -30px;
+            top: 0;
+            transform: rotate(-30deg);
+        }
+
+        .arm.right {
+            right: -30px;
+            top: 0;
+            transform: rotate(30deg);
+        }
+
+        .hand {
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 40px;
+            background: #ffd89b;
+            border-radius: 50%;
+        }
+
+        .book {
+            position: absolute;
+            bottom: -60px;
+            right: -100px;
+            width: 80px;
+            height: 100px;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            border-radius: 5px;
+            transform: rotate(15deg);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .book::before {
+            content: '';
+            position: absolute;
+            left: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 60px;
+            height: 2px;
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .login-container {
+            flex: 1;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .login-card {
+            padding-top: 80px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 30px;
+            padding: 50px 40px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s;
+        }
+
+        .login-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4);
+        }
+
+        .logo {
+            padding-top: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+
+        .logo-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #9cfb93 0%, #f5f057 100%);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 36px;
+            animation: pulse 2s ease-in-out infinite;
+            box-shadow: 0 0 30px rgba(240, 147, 251, 0.5);
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        .logo-text {
+            font-size: 32px;
+            font-weight: bold;
+            background: linear-gradient(135deg, #fff 0%, #ffd89b 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        h2 {
+            text-align: center;
+            font-size: 28px;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .subtitle {
+            text-align: center;
+            opacity: 0.8;
+            margin-bottom: 35px;
+            font-size: 15px;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 500;
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        .input-wrapper {
+            position: relative;
+        }
+
+        input {
+            width: 100%;
+            padding: 15px 20px;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            color: #fff;
+            font-size: 16px;
+            transition: all 0.3s;
+            backdrop-filter: blur(10px);
+        }
+
+        input:focus {
+            outline: none;
+            border-color: rgba(240, 147, 251, 0.5);
+            background: rgba(255, 255, 255, 0.08);
+            box-shadow: 0 0 20px rgba(240, 147, 251, 0.2);
+        }
+
+        input::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .password-toggle {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            font-size: 20px;
+            opacity: 0.6;
+            transition: 0.3s;
+            user-select: none;
+        }
+
+        .password-toggle:hover {
+            opacity: 1;
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .forgot-password {
+            text-align: right;
+            margin-bottom: 25px;
+        }
+
+        .forgot-password a {
+            color: rgba(240, 147, 251, 1);
+            text-decoration: none;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        .forgot-password a:hover {
+            color: #fff;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 16px;
+            border: none;
+            border-radius: 15px;
+            font-weight: 600;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .btn:hover::before {
+            width: 400px;
+            height: 400px;
+        }
+
+        .btn span {
+            position: relative;
+            z-index: 1;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #9cfb93 0%, #f5f057 100%);
+            color: #fd0404;
+            box-shadow: 0 10px 30px rgba(245, 87, 108, 0.4);
+            margin-bottom: 20px;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 40px rgba(127, 3, 242, 0.6);
+        }
+
+        .divider {
+            display: flex;
+            align-items: center;
+            margin: 30px 0;
+            opacity: 0.6;
+        }
+
+        .divider::before,
+        .divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .divider span {
+            padding: 0 15px;
+            font-size: 14px;
+        }
+
+        .social-login {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .btn-social {
+            padding: 14px;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            color: #fff;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-social:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .social-login {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .social-login button {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin: 10px;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .google-btn {
+            background-color: #fff;
+            color: #444;
+            border: 1px solid #ccc;
+        }
+
+        .google-btn:hover {
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+            transform: scale(1.05);
+        }
+
+        .linkedin-btn {
+            background-color: #0077b5;
+            color: #fff;
+        }
+
+        .linkedin-btn:hover {
+            background-color: #005582;
+            transform: scale(1.05);
+        }
+
+        .signin-section {
+            min-height: 100vh;
+            padding: 50px 0;
+        }
+
+        .signup-link {
+            text-align: center;
+            margin-top: 25px;
+            font-size: 15px;
+            opacity: 0.9;
+        }
+
+        .signup-link a {
+            color: rgba(240, 147, 251, 1);
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .signup-link a:hover {
+            color: #fff;
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 25px;
+        }
+
+        .checkbox-group input[type="checkbox"] {
+            width: auto;
+            cursor: pointer;
+        }
+
+        .checkbox-group label {
+            margin: 0;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        @media (max-width: 1024px) {
+            .cartoon-container {
+                display: none;
+            }
+
+            .main-container {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 868px) {
+            .login-card {
+                padding: 80px 50px;
+            }
+
+            .logo-text {
+                font-size: 28px;
+            }
+
+            h2 {
+                font-size: 24px;
+            }
+
+            .social-login {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="animated-bg">
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+
+        <div class="sparkle"></div>
+        <div class="sparkle"></div>
+        <div class="sparkle"></div>
+        <div class="sparkle"></div>
+        <div class="sparkle"></div>
+    </div>
+
+    <div class="main-container">
+        <div class="cartoon-container">
+            <div class="cartoon-character">
+                <div class="character-body">
+                    <div class="arms">
+                        <div class="arm left">
+                            <div class="hand"></div>
+                        </div>
+                        <div class="arm right">
+                            <div class="hand"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="character-head" id="characterHead">
+                    <div class="grad-cap-char"></div>
+                    <div class="eyes-container">
+                        <div class="eye" id="leftEye">
+                            <div class="pupil"></div>
+                        </div>
+                        <div class="eye" id="rightEye">
+                            <div class="pupil"></div>
+                        </div>
+                    </div>
+                    <div class="mouth" id="mouth"></div>
+                </div>
+                <div class="book"></div>
+            </div>
+        </div>
+
+        <div class="login-container">
+            <div class="login-card">
+                <div class="logo">
+                    <div class="logo-icon">🎓</div>
+                    <div class="logo-text">AlumniLink</div>
+                </div>
+
+                <h2>Welcome Back!</h2>
+                <p class="subtitle">Login to connect with your alumni network</p>
+
+                <form id="loginForm">
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" placeholder="Enter your email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <div class="input-wrapper">
+                            <input type="password" id="password" placeholder="Enter your password" required>
+                            <span class="password-toggle" id="passwordToggle" onclick="togglePassword()">👁️</span>
+                        </div>
+                    </div>
+
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="remember">
+                        <label for="remember">Remember me</label>
+                    </div>
+
+                    <div class="forgot-password">
+                        <a href="#">Forgot Password?</a>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">
+                        <span><a href="main.html" style="text-decoration: none;color: #5100ff;">Login</a></span>
+                    </button>
+                </form>
+
+                <div class="divider">
+                    <span>OR</span>
+                </div>
+
+                <div class="social-login">
+                    <button class="google-btn" onclick="window.open('#)">
+                        <img src="https://cdn-icons-png.flaticon.com/512/300/300221.png" alt="Google Logo" width="20">
+                        Sign in with Google
+                    </button>
+
+                     <button class="google-btn" onclick="window.open('#')">
+                        <img src="linkedin.png" alt="Google Logo" width="30">
+                        Sign in with LinkedIn
+                    </button>
+                </div>
+                  <div class="signup-link">
+                Don't have an account? <a href="loading2.html">Sign Up</a>
+            </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <script>
+        let isPasswordVisible = false;
+
+        function togglePassword() {
+            const passwordInput = document.getElementById('password');
+            const toggle = document.getElementById('passwordToggle');
+            const leftEye = document.getElementById('leftEye');
+            const rightEye = document.getElementById('rightEye');
+            const mouth = document.getElementById('mouth');
+            const characterHead = document.getElementById('characterHead');
+
+            isPasswordVisible = !isPasswordVisible;
+
+            if (isPasswordVisible) {
+                passwordInput.type = 'text';
+                toggle.textContent = '🙈';
+
+                // Character covers eyes
+                leftEye.classList.add('closed');
+                rightEye.classList.add('closed');
+                mouth.classList.add('surprised');
+                characterHead.classList.add('peeking');
+
+                // Reset after animation
+                setTimeout(() => {
+                    characterHead.classList.remove('peeking');
+                }, 500);
+            } else {
+                passwordInput.type = 'password';
+                toggle.textContent = '👁️';
+
+                // Character opens eyes
+                leftEye.classList.remove('closed');
+                rightEye.classList.remove('closed');
+                mouth.classList.remove('surprised');
+            }
+        }
+
+        document.getElementById('loginForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            // Add your login logic here
+            console.log('Login attempt:', { email, password });
+
+            // Show success message
+            alert('Login successful! Welcome back to AlumniLink 🎓');
+        });
+
+        // Add enter key support
+        document.querySelectorAll('input').forEach(input => {
+            input.addEventListener('keypress', function (e) {
+                if (e.key === 'Enter') {
+                    document.getElementById('loginForm').dispatchEvent(new Event('submit'));
+                }
+            });
+        });
+
+        // Mouse tracking for eyes
+        document.addEventListener('mousemove', function (e) {
+            if (isPasswordVisible) return;
+
+            const eyes = document.querySelectorAll('.pupil');
+            const characterHead = document.querySelector('.character-head');
+
+            if (!characterHead) return;
+
+            const headRect = characterHead.getBoundingClientRect();
+            const headCenterX = headRect.left + headRect.width / 2;
+            const headCenterY = headRect.top + headRect.height / 2;
+
+            eyes.forEach(pupil => {
+                const eyeRect = pupil.parentElement.getBoundingClientRect();
+                const eyeCenterX = eyeRect.left + eyeRect.width / 2;
+                const eyeCenterY = eyeRect.top + eyeRect.height / 2;
+
+                const angle = Math.atan2(e.clientY - eyeCenterY, e.clientX - eyeCenterX);
+                const distance = Math.min(5, Math.hypot(e.clientX - eyeCenterX, e.clientY - eyeCenterY) / 50);
+
+                const pupilX = Math.cos(angle) * distance;
+                const pupilY = Math.sin(angle) * distance;
+
+                pupil.style.transform = `translate(calc(-50% + ${pupilX}px), calc(-50% + ${pupilY}px))`;
+            });
+        });
+    </script>
+</body>
+
+</html>

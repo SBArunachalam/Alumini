@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Isolated Loading Screen</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Define Neon Colors and Core Styles */
+        :root {
+            --color-dark-bg: #030308;
+            --color-cyan: #00ffff;
+        }
+
+        /* --- Global Reset & Body Styles --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            height: 100%;
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--color-dark-bg);
+        }
+
+        /* --- LOADING SCREEN STYLES --- */
+        #loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--color-dark-bg);
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            /* Added transition so you can see the fade-out effect */
+            transition: opacity 0.5s ease-out; 
+        }
+
+        .loading-gif {
+            width: 250px;
+            height: auto;
+            margin-bottom: 2rem;
+            border-radius: 10px;
+            /* Enhanced neon shadow for the image */
+            box-shadow: 0 0 20px var(--color-cyan), 0 0 40px var(--color-cyan); 
+        }
+
+        .loading-bar-container {
+            width: 80%;
+            max-width: 400px;
+            height: 8px;
+            background-color: rgba(0, 255, 255, 0.1);
+            border-radius: 4px;
+            overflow: hidden;
+            box-shadow: 0 0 5px rgba(0, 255, 255, 0.5);
+        }
+
+        .loading-bar {
+            height: 100%;
+            width: 0%;
+            background-color: var(--color-cyan);
+            box-shadow: 0 0 8px var(--color-cyan);
+            animation: loadBar 2s ease-in-out forwards;
+        }
+        
+        @keyframes loadBar {
+            0% { width: 0%; }
+            100% { width: 100%; }
+        }
+
+        .loading-text {
+            color: var(--color-cyan);
+            text-shadow: 0 0 5px var(--color-cyan);
+            margin-top: 1rem;
+            font-size: 1.2rem;
+        }
+    </style>
+</head>
+<body>
+    
+    <div id="loading-screen">
+        <img 
+            src="https://i.pinimg.com/originals/f5/de/e9/f5dee9eb82760a37400cf4b221d3d774.gif" 
+            alt="Loading animation of Popeye" 
+            class="loading-gif" style="border-radius: 60%;">
+        <div class="loading-bar-container">
+            <div class="loading-bar"></div>
+        </div>
+        <p class="loading-text">ACCESSING NETWORK...</p>
+    </div>
+    
+    <!-- JAVASCRIPT FOR LOADING SCREEN FADE-OUT AND REDIRECT -->
+    <script>
+    
+        const TARGET_URL = "login.html"; 
+        
+        window.onload = function() {
+            const loadingScreen = document.getElementById('loading-screen');
+            
+           
+            setTimeout(() => {
+                loadingScreen.style.opacity = '1'; 
+                
+                setTimeout(() => {
+                    window.location.href = TARGET_URL;
+                }, 500); 
+            }, 2000);
+        };
+        
+    </script>
+
+</body>
+</html>
